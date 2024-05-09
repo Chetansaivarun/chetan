@@ -1,0 +1,64 @@
+Score of a string :
+      class Solution {
+    public int scoreOfString(String s) {
+        int c=0;
+        for(int i=1;i<s.length();i++){
+            int s1=s.charAt(i-1);
+            int s2=s.charAt(i);
+            c+=Math.abs(s1-s2);
+        }return c;
+    }
+}
+
+concatenation of array:
+        class Solution {
+    public int[] getConcatenation(int[] nums) {
+        int[] arr = new int[2 * nums.length];
+        for(int i = 0; i < nums.length; i++) {
+            arr[i] = nums[i];
+            arr[i + nums.length] = nums[i];
+        }
+        return arr;
+    }
+}
+
+two sum:
+        class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] arr=new int[2];
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[i]+nums[j]==target){
+                    arr[0]=i;
+                    arr[1]=j;
+                }
+            }
+        }return arr;
+    }
+}
+valid parentheses:
+            class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> x=new Stack<Character>();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='(' || s.charAt(i)=='{' || s.charAt(i)=='['){
+                x.push(s.charAt(i));
+            }
+            else if(x.empty()){
+                return false;
+            }
+            else if(x.peek()=='(' && s.charAt(i)==')'){
+                x.pop();
+            }
+            else if(x.peek()=='[' && s.charAt(i)==']'){
+                x.pop();
+            }
+            else if(x.peek()=='{' && s.charAt(i)=='}'){
+                x.pop();
+            }
+            else{
+                return false;
+            }
+        } return x.empty();
+    }
+}
